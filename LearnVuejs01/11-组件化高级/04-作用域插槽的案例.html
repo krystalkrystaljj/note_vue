@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+<!--  在父组件中拿不到子组件中的数据-->
+  <cpn></cpn>
+  <cpn>
+<!--    目的是取子组件中的pLanguage-->
+    <div slot-scope="slot">
+      <span v-for="item in slot.data">{{item}}___</span>
+    </div>
+  </cpn>
+
+<!--  join将数组转成字符串-->
+  <cpn>
+    <template slot-scope="slot">
+      <span>{{slot.data.join(' * ')}}</span>
+    </template>
+  </cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <slot :data="pLanguage">
+      <ul v-for="item in pLanguage">
+        <li>{{item}}</li>
+      </ul>
+    </slot>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+
+    },
+    components: {
+      cpn: {
+        template:'#cpn',
+        data() {
+          return {
+            pLanguage:['javascript','c++','python','c#','go','java']
+          }
+        }
+      }
+    }
+  })
+</script>
+
+
+</body>
+</html>

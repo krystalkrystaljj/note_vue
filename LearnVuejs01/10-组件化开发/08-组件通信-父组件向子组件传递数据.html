@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+  <cpn :cmovies="movies" :c-message="message"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <ul v-for="item in cmovies">
+      <li>{{item}}</li>
+    </ul>
+    <h2>{{cMessage}}</h2>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+  const cpn = {
+    template:'#cpn',
+    // props:['cmovies','cmessage'],
+    props:{
+      //1.类型限制
+      // cmovies:Array,
+      // cmessage:String,
+
+    //  提供一些默认值
+      cMessage:{
+        type:String,
+        default:'aaaa',
+        required:true
+      },
+      //类型是对象或者数组时，默认值必须是一个函数
+      cmovies:{
+        type:Array,
+        // default: []//vue2.5.17以下
+        default() {
+          return [ ]
+        }
+      }
+    },
+    data() {
+      return {}
+    }
+  }
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊',
+      movies:['你的名字','天气之子','复仇者联盟','蜘蛛侠']
+    },
+    //字面量增强写法
+    components: {
+      cpn
+    }
+  })
+</script>
+
+</body>
+</html>

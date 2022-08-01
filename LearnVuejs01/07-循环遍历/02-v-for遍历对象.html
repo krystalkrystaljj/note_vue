@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="item in info">{{item}}</li>
+  </ul>
+
+  <ul>
+    <li v-for="(value, key) in info">{{key}}:{{value}}</li>
+  </ul>
+
+  <ul>
+    <li v-for="(value, key,index) in info">{{index}}.{{key}}:{{value}}</li>
+  </ul>
+</div>
+
+
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      info: {
+        name: 'tjj',
+        age: 18,
+        height:1.88
+      }
+    }
+  })
+
+</script>
+
+</body>
+</html>

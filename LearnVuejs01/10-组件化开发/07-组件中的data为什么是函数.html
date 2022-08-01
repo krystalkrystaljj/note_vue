@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<div id="app">
+  <h2>{{message}}</h2>
+  <counter></counter>
+</div>
+
+<template id="counter">
+  <div>
+    <h2>当前的计数为:{{count}}</h2>
+    <button @click="sub()">-</button>
+    <button @click="add()">+</button>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  Vue.component('counter',{
+    template: '#counter',
+    data() {
+      return {
+        count:0
+      }
+    },
+    methods:{
+      sub() {
+        this.count--;
+      },
+      add() {
+        this.count++;
+      }
+    }
+  })
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊',
+    },
+
+  })
+</script>
+
+<script>
+  // function abc(){
+  //   return {
+  //     name: 'tjj',
+  //     age:18
+  //   }
+  // }
+  // let obj1 = abc();
+  // let obj2 = abc();
+  // let obj3 = abc();
+  // obj1.name = 'why'
+  // console.log(obj2);
+  // console.log(obj3);
+
+  const obj = {
+    name:'tjj',
+    age: '18'
+  }
+  function abc() {
+    return obj
+  }
+  let obj1 = abc();
+  let obj2 = abc();
+  let obj3 = abc();
+  obj1.name = 'why'
+  console.log(obj2);
+  console.log(obj3);
+</script>
+
+</body>
+</html>
